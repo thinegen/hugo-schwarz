@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+<div>
+  <h1>{{ .Site.Title }}</h1>
+  <ul id="postrange">
+    {{ range first 10 .Site.RegularPages }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        <br />
+        {{ partial "publishDate.html" . }}
+      </li>
+    {{end}}
+  </ul>
+</div>
+
+{{ end }}
