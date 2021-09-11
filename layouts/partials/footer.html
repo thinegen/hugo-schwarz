@@ -1,6 +1,6 @@
 <div id="footer" class="center-text">
     <p>
-        <a href="{{ relref . "/tags/" }}">Tags</a> | <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}">RSS</a> {{ if .Site.Language.Params.privacyPage }}| <a href="{{ relref . .Site.Language.Params.privacyPage }}">{{ i18n "gdprlink" }}</a>{{ end }}
+        <a href="{{ relref . "/tags/" }}">Tags</a> | <a href="/{{ .Lang }}/index.xml">RSS</a> {{ if .Site.Language.Params.privacyPage }}| <a href="{{ relref . .Site.Language.Params.privacyPage }}">{{ i18n "gdprlink" }}</a>{{ end }}
     </p>
 
     {{ if or (.IsSection) (.CurrentSection.IsHome) }}
