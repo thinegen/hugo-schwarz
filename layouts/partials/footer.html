@@ -1,9 +1,7 @@
 <div id="footer" class="center-text">
     <p>
         <a href="{{ relref . "/tags/" }}">Tags</a> |
-        {{ with .OutputFormats.Get "rss" -}}
-            {{ printf `<a href="%s">RSS</a>` .Permalink | safeHTML }}
-        {{ end }}
+        {{ if .Site.IsMultiLingual }} <a href="/{{ .Lang }}/index.xml">RSS</a> {{ else }}<a href="/index.xml">RSS</a> {{ end }}
         {{ if .Site.Language.Params.privacyPage }}| <a href="{{ relref . .Site.Language.Params.privacyPage }}">{{ i18n "gdprlink" }}</a>{{ end }}
     </p>
 
