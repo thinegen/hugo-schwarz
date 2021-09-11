@@ -3,13 +3,15 @@
 <div>
   <h1>{{ .Site.Title }}</h1>
   <ul id="postrange">
-    {{ range ( where .Site.RegularPages "Type" "blog" | first 10 ) }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-        <br />
-        {{ partial "publishDate.html" . }}
-      </li>
-    {{end}}
+    {{ range .Site.RegularPages  | first 10 }}
+      {{ if not .Params.noindex }}
+        <li>
+          <a href="{{ .Permalink }}">{{ if .Section }}[{{ .Section | humanize }}] {{ end }}{{ .Title }}</a>
+          <br />
+          {{ partial "publishDate.html" . }}
+        </li>
+        {{end}}
+      {{end}}
   </ul>
 </div>
 

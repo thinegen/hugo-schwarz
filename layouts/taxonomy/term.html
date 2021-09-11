@@ -4,7 +4,7 @@
 
 {{ range .Pages.ByPublishDate.Reverse }}
 <p>
-  <a href="{{ .RelPermalink }}">{{ if .Section }}[{{ .Section | humanize }}]{{ end }} {{ .Title }}</a>
+  <a href="{{ .RelPermalink }}">{{ if .Section }}[{{ .Section | humanize }}] {{ end }}{{ .Title }}</a>
   <br>
   {{ partial "publishDate.html" . }}
 </p>
