@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+<p>Go to:</p>
+<ul id="postrange">
+  {{ range .Site.Sections }}
+  <li class="li-vertical">
+    <a href="{{ absURL .Permalink }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+  <li>
+  </li>
+  {{ range .Site.RegularPages }}
+    {{ if eq .Section "" }}
+      <li class="li-vertical">
+        <a href="{{ absURL .Permalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+  {{ end }}
+</ul>
+
+{{ end }}
