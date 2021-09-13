@@ -26,8 +26,7 @@ code * {
 }
 
 article > pre {
-    border-left: 0.2em solid $textColor;
-    padding-left: 0.5em;
+    padding: 0.5em 0.75em;
     background-color: $secondaryColor;
     overflow: auto;
 }
@@ -136,6 +135,10 @@ body {
 article > pre {
     width: 80%;
     margin: 0 auto;
+}
+
+td > pre {
+    margin: 0.25em 0.5em;
 }
 
 .footnotes ol::before {
