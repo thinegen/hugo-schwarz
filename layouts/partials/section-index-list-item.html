@@ -1,0 +1,5 @@
+<li>
+    <a href="{{ .Permalink }}">{{ if .Section }}[{{ .Section | humanize }}] {{ end }}{{ .Title }}</a>
+    <br />
+    {{ partial "publishDate.html" . }}
+</li>

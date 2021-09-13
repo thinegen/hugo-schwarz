@@ -3,13 +3,15 @@
 <h1>{{ .Title }}</h1>
 {{ .Content }}
 <ul id="postrange">
-  {{ range .Pages.ByPublishDate.Reverse }}
-  <li>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-    <br />
-    {{ partial "publishDate.html" . }}
-  </li>
+  {{ range .Paginator.Pages }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <br />
+      {{ partial "publishDate.html" . }}
+    </li>
   {{ end }}
 </ul>
+
+{{ partial "pagination.html" . }}
 
 {{ end }}

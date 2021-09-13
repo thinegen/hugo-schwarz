@@ -3,16 +3,14 @@
 <div>
   <h1>{{ .Site.Title }}</h1>
   <ul id="postrange">
-    {{ range .Site.RegularPages | first 20 }}
+    {{ range .Paginator.Pages }}
       {{ if not .Params.noindex }}
-        <li>
-          <a href="{{ .Permalink }}">{{ if .Section }}[{{ .Section | humanize }}] {{ end }}{{ .Title }}</a>
-          <br />
-          {{ partial "publishDate.html" . }}
-        </li>
-        {{end}}
+        {{ partial "section-index-list-item.html" . }}
       {{end}}
+    {{end}}
   </ul>
 </div>
+
+{{ partial "pagination.html" . }}
 
 {{ end }}

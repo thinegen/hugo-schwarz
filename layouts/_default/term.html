@@ -1,11 +1,9 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
+<h1>Tag: {{ .Title }}</h1>
 <ul id="postrange">
   {{ range .Paginator.Pages }}
-  <li>
-    #<a href="{{ .Permalink }}">{{ .Title }}</a>
-  </li>
+    {{ partial "section-index-list-item.html" . }}
   {{ end }}
 </ul>
 
