@@ -3,7 +3,7 @@
 <div>
   <h1>{{ .Site.Title }}</h1>
   <ul id="postrange">
-    {{ range .Site.RegularPages  | first 10 }}
+    {{ range .Site.RegularPages | first 20 }}
       {{ if not .Params.noindex }}
         <li>
           <a href="{{ .Permalink }}">{{ if .Section }}[{{ .Section | humanize }}] {{ end }}{{ .Title }}</a>
