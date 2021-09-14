@@ -196,14 +196,13 @@ tr:nth-child(2n) {
 
 #next-prev {
     font-size: small;
-    width: 33%;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between ;
+    text-align: center;
 }
 
 .next-prev-span {
-    margin: 0 auto;
+    margin: 0 1em;
+    display: inline-block;
 }
 
 @media screen and (min-width: 45em) {
