@@ -1,13 +1,21 @@
 {{ define "main" }}
 
+{{ $orderSectionAlphabetically := (in .Site.Params.sectionsToSortAlphabetically .Section) }}
+
 <h1>{{ .Title }}</h1>
 {{ .Content }}
-<ul id="postrange">
-  {{ range .Paginator.Pages }}
+<ul id="postrange" class="{{ if $orderSectionAlphabetically }}alphabetical-ul{{end}}">
+  {{ $pagesToPaginate := .Pages }}
+  {{ if $orderSectionAlphabetically }}
+    {{ $pagesToPaginate := .Data.Pages.ByTitle }}
+  {{ end }}
+  {{ range (.Paginate ($pagesToPaginate)).Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
-      <br />
-      {{ partial "publishDate.html" . }}
+      {{ if not $orderSectionAlphabetically}}
+        <br />
+        {{ partial "publishDate.html" . }}
+      {{ end }}
     </li>
   {{ end }}
 </ul>

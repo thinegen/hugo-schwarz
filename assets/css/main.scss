@@ -16,6 +16,11 @@ $secondaryColor: #222129; // Background of Code
 * {
     direction: ltr;
     font-variant-ligatures: no-common-ligatures;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 
 code,
@@ -34,10 +39,6 @@ article > pre {
 h1 {
     margin: 0.5em 0;
     font-size: 2em;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
 }
 
 h2 {
@@ -79,6 +80,14 @@ body {
 #postrange {
     list-style-type: none;
     padding-left: 0;
+}
+
+@media screen and (min-width: 32em) {
+    .alphabetical-ul {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+    }
 }
 
 #postrange li {
