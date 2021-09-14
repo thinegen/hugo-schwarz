@@ -1,5 +1,7 @@
-<hr />
-<div id="next-prev">
-    {{ with .PrevInSection }}<span class="next-prev-span"><a href="{{.Permalink}}">« {{ .Title }}</a></span>{{ end }}
-    {{ with .NextInSection }}<span class="next-prev-span"><a href="{{.Permalink}}">{{ .Title }} »</a></span>{{ end }}
-</div>
+{{ if or (.PrevInSection) (.NextInSection)}}
+    <hr />
+    <div id="next-prev">
+        {{ with .NextInSection }}<span class="next-prev-span"><a href="{{.Permalink}}">« {{ .Title }}</a></span>{{ end }}
+        {{ with .PrevInSection }}<span class="next-prev-span"><a href="{{.Permalink}}">{{ .Title }} »</a></span>{{ end }}
+    </div>
+{{ end }}

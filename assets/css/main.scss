@@ -203,6 +203,8 @@ tr:nth-child(2n) {
 .next-prev-span {
     margin: 0 1em;
     display: inline-block;
+    vertical-align: middle;
+    max-width: 15em;
 }
 
 @media screen and (min-width: 45em) {
