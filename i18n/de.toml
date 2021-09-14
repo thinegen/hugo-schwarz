@@ -13,5 +13,8 @@ other = "Alle Änderungen"
 [gdprlink]
 other = "Datenschutz"
 
+[imprintlink]
+other = "Impressum"
+
 [toc-hamburger-aria-label]
 other = "Inhaltsverzeichnis anzeigen oder verbergen"
