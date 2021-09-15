@@ -9,7 +9,9 @@
   {{ if $orderSectionAlphabetically }}
     {{ $pagesToPaginate := .Data.Pages.ByTitle }}
   {{ end }}
-  {{ range (.Paginate ($pagesToPaginate)).Pages }}
+  {{ $paginateAlphabetical := 10 }}
+  {{ if .Site.Params.paginateAlphabetical }}{{ $paginateAlphabetical = .Site.Params.paginateAlphabetical }}{{ end }}
+  {{ range (.Paginate ($pagesToPaginate) $paginateAlphabetical).Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       {{ if not $orderSectionAlphabetically}}
