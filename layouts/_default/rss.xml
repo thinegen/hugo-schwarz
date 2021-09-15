@@ -32,7 +32,11 @@
           <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
           {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
           <guid>{{ .Permalink }}</guid>
-          {{ if .Summary }}<description>{{ .Summary | html }}</description>{{ end }}
+          {{ if .Site.Params.ShowFullRSS }}
+            <description>{{ printf "<![CDATA[%s]]>" .Content | safeHTML }}</description>
+          {{ else}}
+            {{ if .Summary }}<description>{{ .Summary | html }}</description>{{ end }}
+          {{ end }}
         </item>
       {{ end }}
     {{ end }}
