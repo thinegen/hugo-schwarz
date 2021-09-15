@@ -11,7 +11,7 @@
   {{ end }}
   {{ $paginateAlphabetical := 10 }}
   {{ if .Site.Params.paginateAlphabetical }}{{ $paginateAlphabetical = .Site.Params.paginateAlphabetical }}{{ end }}
-  {{ range (.Paginate ($pagesToPaginate) $paginateAlphabetical).Pages }}
+  {{ range (.Paginate ($pagesToPaginate.ByTitle) $paginateAlphabetical).Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       {{ if not $orderSectionAlphabetically}}
