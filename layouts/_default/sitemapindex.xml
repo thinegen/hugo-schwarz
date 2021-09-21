@@ -1,0 +1,25 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	{{ range . }}
+        {{ $timeZero := time "0001-01-01 00:00:00 +0000 UTC" }}
+        {{ $lastmod := $timeZero }}
+        <sitemap>
+            {{ range .Pages }}
+                {{ $pageBiggerMod := $timeZero }}
+                {{ $diffPublishedLastmod := (sub .Lastmod.Unix .PublishDate.Unix) }}
+                {{ if gt $diffPublishedLastmod 0 }}
+                    {{ $pageBiggerMod = .Lastmod }}
+                {{ else }}
+                    {{ $pageBiggerMod = .PublishDate }}
+                {{ end }}
+                {{ if gt (sub $pageBiggerMod.Unix $lastmod.Unix) 0 }}
+                    {{ $lastmod = $pageBiggerMod }}
+                {{ end }}
+            {{ end }}
+            {{ if not (eq (sub $timeZero.Unix $lastmod.Unix) 0) }}
+                <loc>{{ .SitemapAbsURL }}</loc>
+            {{ end }}
+            <lastmod>{{ $lastmod.Format "2006-01-02" | safeHTML }}</lastmod>
+        </sitemap>
+	{{ end }}
+</sitemapindex>
