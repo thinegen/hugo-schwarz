@@ -1,4 +1,4 @@
-Sitemap: {{ "sitemap.xml" | absLangURL }}
+Sitemap: {{ "sitemap.xml" | absURL }}
 
 User-agent: *
 Disallow: /de/categories/
