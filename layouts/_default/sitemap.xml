@@ -4,11 +4,16 @@
     {{ if not .Params.noindex }}
       <url>
         <loc>{{ .Permalink }}</loc>
+        {{ $timeZero := time "0001-01-01 00:00:00 +0000 UTC" }}
         {{ $diffPublishedLastmod := (sub .Lastmod.Unix .PublishDate.Unix) }}
         {{ if gt $diffPublishedLastmod 0 }}
-          <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+          {{ if ne .Lastmod.Unix $timeZero.Unix }}
+            <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+          {{ end }}
         {{ else }}
-          <lastmod>{{ safeHTML ( .PublishDate.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+          {{ if ne .PublishDate.Unix $timeZero.Unix }}
+            <lastmod>{{ safeHTML ( .PublishDate.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+          {{ end }}
         {{ end }}
         {{ with .Sitemap.ChangeFreq }}
           <changefreq>{{ . }}</changefreq>
