@@ -1,10 +1,10 @@
-{{ $CC := resources.Get "img/cc-icons/cc.svg" | minify }}
-{{ $BY := resources.Get "img/cc-icons/by.svg" | minify }}
-{{ $NC := resources.Get "img/cc-icons/nc.svg" | minify }}
-{{ $NCEU := resources.Get "img/cc-icons/nc-eu.svg" | minify }}
-{{ $NCJP := resources.Get "img/cc-icons/nc-jp.svg" | minify }}
-{{ $ND := resources.Get "img/cc-icons/nd.svg" | minify }}
-{{ $SA := resources.Get "img/cc-icons/sa.svg" | minify }}
+{{ $CC := resources.Get "img/cc-icons/cc.svg" | minify | fingerprint }}
+{{ $BY := resources.Get "img/cc-icons/by.svg" | minify | fingerprint }}
+{{ $NC := resources.Get "img/cc-icons/nc.svg" | minify | fingerprint }}
+{{ $NCEU := resources.Get "img/cc-icons/nc-eu.svg" | minify | fingerprint }}
+{{ $NCJP := resources.Get "img/cc-icons/nc-jp.svg" | minify | fingerprint }}
+{{ $ND := resources.Get "img/cc-icons/nd.svg" | minify | fingerprint }}
+{{ $SA := resources.Get "img/cc-icons/sa.svg" | minify | fingerprint }}
 
 <div id="copyright">
     {{ if .Site.Language.Params.copyrightPage }}<a href="{{ relref . .Site.Language.Params.copyrightPage }}" id="copyright-link">{{ end }}
