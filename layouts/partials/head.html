@@ -33,6 +33,8 @@
 
     {{if .Description }}
         <meta name="description" content="{{ .Description | safeHTML }}"/>
+    {{ else if and .IsHome .Site.Params.Description }}
+        <meta name="description" content="{{ .Site.Params.Description | safeHTML }}"/>
     {{ end }}
 
     {{ if .Params.noindex }}
