@@ -8,11 +8,28 @@
 
 <figure class="article-fig">
 	<img class="article-img" src="{{ $startimg.RelPermalink }}" alt="{{ if .Get "alt"}}{{ .Get "alt" }}{{ else }}{{ .Get "caption" | html }}{{ end }}"
-	srcset="{{ if gt $img.Width 750 }}{{ with $img.Resize "750x" }}{{ .RelPermalink }} 750w,{{ end }}{{ end }}
-	{{ if gt $img.Width 1000 }}{{ with $img.Resize "1000x" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}{{ end }}
-	{{ if gt $img.Width 1250 }}{{ with $img.Resize "1250x" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}{{ end }}
-	{{ if gt $img.Width 1500 }}{{ with $img.Resize "1500x" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}{{ end }}
-	{{ if gt $img.Width 2000 }}{{ with $img.Resize "2000x" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}{{ end }}
-	{{ ($img | fingerprint).RelPermalink }} {{ $img.Width }}w"/>
+	srcset="
+		{{ if gt $img.Width 750 }}
+			{{ with $img.Resize "750x" | fingerprint }}{{ .RelPermalink }} 750w,{{ end }}
+			{{ with $img.Resize "750x webp q90" | fingerprint }}{{ .RelPermalink }} 750w,{{ end }}
+		{{ end }}
+		{{ if gt $img.Width 1000 }}
+			{{ with $img.Resize "1000x" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}
+			{{ with $img.Resize "1000x webp q90" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}
+		{{ end }}
+		{{ if gt $img.Width 1250 }}
+			{{ with $img.Resize "1250x" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}
+			{{ with $img.Resize "1250x webp q90" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}
+		{{ end }}
+		{{ if gt $img.Width 1500 }}
+			{{ with $img.Resize "1500x" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}
+			{{ with $img.Resize "1500x webp q90" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}
+		{{ end }}
+		{{ if gt $img.Width 2000 }}
+			{{ with $img.Resize "2000x" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}
+			{{ with $img.Resize "2000x webp q90" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}
+		{{ end }}
+		{{ ($img | fingerprint).RelPermalink }} {{ $img.Width }}w,
+	"/>
 	<figcaption>{{ (.Get "caption") | safeHTML }}</figcaption>
 </figure>
