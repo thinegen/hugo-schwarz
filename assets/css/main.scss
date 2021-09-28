@@ -88,18 +88,18 @@ body {
         -moz-columns: 2;
         columns: 2;
     }
-    .article-fig {
+    .article-img {
         width: 75% !important;
     }
 }
-.article-fig {
+.article-img {
     width: 100%;
     margin: 1.5em auto;
     text-align: center;
 }
 
-.article-img {
-    max-width: 100%;
+.article-img img {
+    width: 100%;
 }
 
 figcaption {
