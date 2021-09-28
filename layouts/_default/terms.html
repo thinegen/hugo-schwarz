@@ -1,8 +1,8 @@
 {{ define "main" }}
 
 <h1>{{ .Title }}</h1>
-<ul id="postrange">
-  {{ range .Paginator.Pages }}
+<ul id="postrange" class="two-column-ul">
+  {{ range .Paginator.Pages.ByTitle }}
   <li>
     #<a href="{{ .Permalink }}">{{ .Title }}</a>
   </li>
