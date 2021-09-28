@@ -88,6 +88,25 @@ body {
         -moz-columns: 2;
         columns: 2;
     }
+    .article-fig {
+        width: 75% !important;
+    }
+}
+.article-fig {
+    width: 100%;
+    margin: 1.5em auto;
+    text-align: center;
+}
+
+.article-img {
+    max-width: 100%;
+}
+
+figcaption {
+    font-size: small;
+    font-style: italic;
+    text-align: center;
+    margin: 0.5em;
 }
 
 #postrange li {

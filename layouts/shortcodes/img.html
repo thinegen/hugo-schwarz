@@ -1,0 +1,5 @@
+{{ $img := resources.Get (delimit (slice "img" (.Get "src")) "/") }}
+<figure class="article-fig">
+	<img class="article-img" src="{{ $img.RelPermalink }}" alt="{{ if .Get "alt"}}{{ .Get "alt" }}{{ else }}{{ .Get "caption" | html }}{{ end }}" />
+	<figcaption>{{ (.Get "caption") | safeHTML }}</figcaption>
+</figure>
