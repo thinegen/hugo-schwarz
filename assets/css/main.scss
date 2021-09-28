@@ -88,7 +88,8 @@ body {
         -moz-columns: 2;
         columns: 2;
     }
-    .article-img {
+    .article-img,
+    .article-img img {
         width: 75% !important;
     }
 }
