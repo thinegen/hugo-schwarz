@@ -7,11 +7,11 @@
 <ul id="postrange" class="{{ if $orderSectionAlphabetically }}alphabetical-ul{{end}}">
   {{ $pagesToPaginate := .Pages }}
   {{ if $orderSectionAlphabetically }}
-    {{ $pagesToPaginate := .Data.Pages.ByTitle }}
+    {{ $pagesToPaginate = .Pages.ByTitle }}
   {{ end }}
-  {{ $paginateAlphabetical := 10 }}
+  {{ $paginateAlphabetical := .Paginator.PageSize }}
   {{ if .Site.Params.paginateAlphabetical }}{{ $paginateAlphabetical = .Site.Params.paginateAlphabetical }}{{ end }}
-  {{ range (.Paginate ($pagesToPaginate.ByTitle) $paginateAlphabetical).Pages }}
+  {{ range (.Paginate ($pagesToPaginate) $paginateAlphabetical).Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       {{ if not $orderSectionAlphabetically}}
