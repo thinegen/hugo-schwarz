@@ -88,19 +88,19 @@ body {
         -moz-columns: 2;
         columns: 2;
     }
-    .article-img,
-    .article-img img {
-        width: 75% !important;
+    .pic-container {
+        width: 66% !important;
     }
 }
-.article-img {
+.pic-container {
     width: 100%;
     margin: 1.5em auto;
     text-align: center;
 }
 
-.article-img img {
+.pic-container img {
     width: 100%;
+    margin: 0;
 }
 
 figcaption {

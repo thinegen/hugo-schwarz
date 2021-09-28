@@ -6,45 +6,47 @@
 	{{ $startimg = $img.Resize "500x" | fingerprint }}
 {{ end }}
 
-<picture class="article-img" >
-	<source type="image/webp"
-	srcset="
-		{{ if gt $img.Width 750 }}
-			{{ with $img.Resize "750x webp q90" | fingerprint }}{{ .RelPermalink }} 750w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 1000 }}
-			{{ with $img.Resize "1000x webp q90" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 1250 }}
-			{{ with $img.Resize "1250x webp q90" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 1500 }}
-			{{ with $img.Resize "1500x webp q90" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 2000 }}
-			{{ with $img.Resize "2000x webp q90" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}
-		{{ end }}
-		{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .RelPermalink }} {{ .Width }}w{{ end }}
-	" />
-	<source 
-	srcset="
-		{{ if gt $img.Width 750 }}
-			{{ with $img.Resize "750x" | fingerprint }}{{ .RelPermalink }} 750w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 1000 }}
-			{{ with $img.Resize "1000x" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 1250 }}
-			{{ with $img.Resize "1250x" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 1500 }}
-			{{ with $img.Resize "1500x" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}
-		{{ end }}
-		{{ if gt $img.Width 2000 }}
-			{{ with $img.Resize "2000x" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}
-		{{ end }}
-		{{ ($img | fingerprint).RelPermalink }} {{ $img.Width }}w
-	" >
-	<img src="{{ $startimg.RelPermalink }}" decoding="async" loading="lazy" alt="{{ if .Get "alt"}}{{ .Get "alt" }}{{ else }}{{ .Get "caption" | html }}{{ end }}"/>
-	<figcaption>{{ (.Get "caption") | safeHTML }}</figcaption>
-</picture>
+<div class="pic-container">
+	<picture class="article-img" >
+		<source type="image/webp"
+		srcset="
+			{{ if gt $img.Width 750 }}
+				{{ with $img.Resize "750x webp q90" | fingerprint }}{{ .RelPermalink }} 750w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 1000 }}
+				{{ with $img.Resize "1000x webp q90" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 1250 }}
+				{{ with $img.Resize "1250x webp q90" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 1500 }}
+				{{ with $img.Resize "1500x webp q90" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 2000 }}
+				{{ with $img.Resize "2000x webp q90" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}
+			{{ end }}
+			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .RelPermalink }} {{ .Width }}w{{ end }}
+		" />
+		<source 
+		srcset="
+			{{ if gt $img.Width 750 }}
+				{{ with $img.Resize "750x" | fingerprint }}{{ .RelPermalink }} 750w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 1000 }}
+				{{ with $img.Resize "1000x" | fingerprint }}{{ .RelPermalink }} 1000w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 1250 }}
+				{{ with $img.Resize "1250x" | fingerprint }}{{ .RelPermalink }} 1250w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 1500 }}
+				{{ with $img.Resize "1500x" | fingerprint }}{{ .RelPermalink }} 1500w,{{ end }}
+			{{ end }}
+			{{ if gt $img.Width 2000 }}
+				{{ with $img.Resize "2000x" | fingerprint }}{{ .RelPermalink }} 2000w,{{ end }}
+			{{ end }}
+			{{ ($img | fingerprint).RelPermalink }} {{ $img.Width }}w
+		" >
+		<img src="{{ $startimg.RelPermalink }}" decoding="async" loading="lazy" alt="{{ if .Get "alt"}}{{ .Get "alt" }}{{ else }}{{ .Get "caption" | html }}{{ end }}"/>
+		<figcaption>{{ (.Get "caption") | safeHTML }}</figcaption>
+	</picture>
+</div>
