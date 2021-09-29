@@ -1,5 +1,1 @@
 Sitemap: {{ "sitemap.xml" | absURL }}
-
-User-agent: *
-Disallow: /de/categories/
-Disallow: /en/categories/
