@@ -1,3 +1,5 @@
+{{ $defaultImageWidth := 450.0 }} {{/* make this a float! */}}
+
 {{ $img := resources.Get (delimit (slice "img" (.Get "src")) "/") }}
 
 {{ $startimg := $img | fingerprint}}
@@ -46,7 +48,7 @@
 			{{ end }}
 			{{ ($img | fingerprint).RelPermalink }} {{ $img.Width }}w
 		" >
-		<img src="{{ $startimg.RelPermalink }}" decoding="async" loading="lazy" alt="{{ if .Get "alt"}}{{ .Get "alt" }}{{ else }}{{ .Get "caption" | html }}{{ end }}"/>
+		<img src="{{ $startimg.RelPermalink }}" decoding="async" loading="lazy" alt="{{ if .Get "alt"}}{{ .Get "alt" }}{{ else }}{{ .Get "caption" | html }}{{ end }} " height="{{ math.Round (mul (div $startimg.Height (float $startimg.Width) ) $defaultImageWidth) }}" width="{{ math.Round $defaultImageWidth }}" />
 		<figcaption>{{ (.Get "caption") | safeHTML }}</figcaption>
 	</picture>
 </div>
