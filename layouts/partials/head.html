@@ -8,12 +8,12 @@
 
     {{ hugo.Generator }}
 
-    {{ $css := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS | minify | fingerprint }}
+    {{ $css := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/style.main.scss" . | toCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
     {{ $footnoteJS := resources.Get "js/footnotes.js" | resources.Minify | resources.Fingerprint "sha512" }}
     <script async defer src="{{ $footnoteJS.Permalink }}" integrity="{{ $footnoteJS.Data.Integrity }}"></script>
 
-    {{ $externalLinksJS := resources.Get "js/external-links.js" | resources.ExecuteAsTemplate "js.external-links.js" .| resources.Minify | resources.Fingerprint "sha512" }}
+    {{ $externalLinksJS := resources.Get "js/external-links.js" | resources.ExecuteAsTemplate "js/js.external-links.js" .| resources.Minify | resources.Fingerprint "sha512" }}
     <script async defer src="{{ $externalLinksJS.Permalink }}" integrity="{{ $externalLinksJS.Data.Integrity }}"></script>
 
     {{ if eq .Page.Params.layout "wiki" }}

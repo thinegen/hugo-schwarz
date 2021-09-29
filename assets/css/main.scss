@@ -64,7 +64,7 @@ a {
     color: $linkColor;
 }
 {{ if .Site.Params.markExternalLinks }}
-    {{ $externalLinkSVGMin := resources.Get "img/external-link.svg" | resources.ExecuteAsTemplate "svg.external-link.svg" . | resources.Minify | resources.Fingerprint "sha512" }}
+    {{ $externalLinkSVGMin := resources.Get "img/external-link.svg" | resources.ExecuteAsTemplate "img/svg.external-link.svg" . | resources.Minify | resources.Fingerprint "sha512" }}
     .external-link::after {
         content: "";
         display: inline-block;
