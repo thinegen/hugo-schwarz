@@ -4,7 +4,7 @@
 
 <h1>{{ .Title }}</h1>
 {{ .Content }}
-<ul id="postrange" class="{{ if $orderSectionAlphabetically }}alphabetical-ul{{end}}">
+<ul id="postrange" class="{{ if $orderSectionAlphabetically }}two-column-ul{{end}}">
   {{ $pagesToPaginate := .Pages }}
   {{ if $orderSectionAlphabetically }}
     {{ $pagesToPaginate = .Pages.ByTitle }}
