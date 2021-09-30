@@ -9,9 +9,16 @@
   {{ if $orderSectionAlphabetically }}
     {{ $pagesToPaginate = .Pages.ByTitle }}
   {{ end }}
-  {{ $paginateAlphabetical := .Paginator.PageSize }}
-  {{ if .Site.Params.paginateAlphabetical }}{{ $paginateAlphabetical = .Site.Params.paginateAlphabetical }}{{ end }}
-  {{ range (.Paginate ($pagesToPaginate) $paginateAlphabetical).Pages }}
+
+  {{ $paginator := "" }}
+
+  {{ if and $orderSectionAlphabetically .Site.Params.paginateAlphabetical }}
+    {{ $paginator = .Paginate $pagesToPaginate .Site.Params.paginateAlphabetical }}
+  {{ else }}
+    {{ $paginator = .Paginate $pagesToPaginate }}
+  {{ end }}
+
+  {{ range $paginator.Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       {{ if not $orderSectionAlphabetically}}
