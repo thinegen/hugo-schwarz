@@ -8,12 +8,13 @@
   <p>
     {{ i18n "metadata-published" }}: {{ partial "publishDate.html" . }}
 
-    {{ if and (.GitInfo) ($.Site.Params.giturl) }}
-    |
-      {{ if .IsPage }}
-        {{ i18n "metadata-last-update" }}: <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commit/{{ .GitInfo.Hash }}">{{ end }}{{ $lastModified }}{{ if .IsPage }}</a> |
+    {{ if .GitInfo }}
+      {{ if $.Site.Params.giturl }}
+        | {{ i18n "metadata-last-update" }}: <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commit/{{ .GitInfo.Hash }}">{{ $lastModified }}</a>
+        | <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commits/main/content/{{ .Site.Language.Lang }}/{{ .File.Path }}">{{ i18n "metadata-all-updates" }}</a>
+      {{ else }}
+        | {{ i18n "metadata-last-update" }}: {{ $lastModified }}
       {{ end }}
-      <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commits/main/content/{{ .Site.Language.Lang }}/{{ .File.Path }}">{{ i18n "metadata-all-updates" }}</a>
     {{ end }}
   </p>
 </div>
