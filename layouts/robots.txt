@@ -1,1 +1,14 @@
 Sitemap: {{ "sitemap.xml" | absURL }}
+{{ if .Site.Params.noindexImages }}
+User-agent: *
+Disallow: /*.gif$
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.svg$
+Disallow: /*.png$
+Disallow: /*.webp$
+Disallow: /*.tif$
+Disallow: /*.tiff$
+Disallow: /*.bmp$
+Disallow: /*.heif$
+{{ end }}
