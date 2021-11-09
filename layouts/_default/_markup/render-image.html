@@ -15,21 +15,21 @@
 		srcset="
 			{{ range $imageSizes }}
 				{{ if gt $img.Width . }}
-					{{ with $img.Resize (printf "%dx webp q90" .) | fingerprint }}{{ .RelPermalink }} {{ .Width }}w,{{ end }}
+					{{ with $img.Resize (printf "%dx webp q90" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
 				{{ end }}
 			{{ end }}
-			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .RelPermalink }} {{ .Width }}w,{{ end }}
+			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
 		" />
 		<source 
 		srcset="
 			{{ range $imageSizes }}
 				{{ if gt $img.Width . }}
-					{{ with $img.Resize (printf "%dx" .) | fingerprint }}{{ .RelPermalink }} {{ .Width }}w,{{ end }}
+					{{ with $img.Resize (printf "%dx" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
 				{{ end }}
 			{{ end }}
-			{{ ($img | fingerprint).RelPermalink }} {{ $img.Width }}w
+			{{ ($img | fingerprint).Permalink }} {{ $img.Width }}w
 		" >
-		<img src="{{ $startimg.RelPermalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" height="{{ math.Round (mul (div $startimg.Height (float $startimg.Width) ) $defaultImageWidth) }}" width="{{ math.Round $defaultImageWidth }}" />
+		<img src="{{ $startimg.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" height="{{ math.Round (mul (div $startimg.Height (float $startimg.Width) ) $defaultImageWidth) }}" width="{{ math.Round $defaultImageWidth }}" />
         {{ with .Text }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
 	</picture>
 </div>
