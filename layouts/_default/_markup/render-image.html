@@ -1,5 +1,8 @@
 {{ $defaultImageWidth := 450.0 }} {{/* make this a float! */}}
 
+{{ $image_arr := split .Destination "." }}
+{{ $image_ext := index $image_arr 1 }}
+
 {{ $img := resources.Get (delimit (slice "img" .Destination) "/") }}
 {{ $startimg := $img | fingerprint}}
 
@@ -20,7 +23,7 @@
 			{{ end }}
 			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
 		" />
-		<source 
+		<source type="image/{{ $image_ext }}"
 		srcset="
 			{{ range $imageSizes }}
 				{{ if gt $img.Width . }}
