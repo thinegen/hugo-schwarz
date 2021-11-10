@@ -14,16 +14,16 @@
 
 <div class="pic-container">
 	<picture class="article-img">
-		<source type="image/webp"
+		<source type="image/webp" sizes="50vw"
 		srcset="
 			{{ range $imageSizes }}
 				{{ if gt $img.Width . }}
 					{{ with $img.Resize (printf "%dx webp q90" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
 				{{ end }}
 			{{ end }}
-			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
+			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .Permalink }} {{ .Width }}w{{ end }}
 		" />
-		<source type="image/{{ $image_ext }}"
+		<source type="image/{{ $image_ext }}" sizes="50vw"
 		srcset="
 			{{ range $imageSizes }}
 				{{ if gt $img.Width . }}
