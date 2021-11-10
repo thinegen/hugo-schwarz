@@ -1,3 +1,6 @@
 [submodule "assets/css/hamburgers"]
 	path = assets/css/hamburgers
 	url = git@github.com:jonsuh/hamburgers.git
+[submodule "assets/js/MathJax"]
+	path = assets/js/MathJax
+	url = https://github.com/mathjax/MathJax.git

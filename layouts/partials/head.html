@@ -44,5 +44,13 @@
         <meta name="robots" content="noindex,noarchive">
     {{ end }}
 
+    {{ if .Params.MathJax }}
+        {{ $MathJaxConfigJS := resources.Get "js/mathjax-config.js" | resources.Minify | resources.Fingerprint }}
+        <script src="{{ $MathJaxConfigJS.Permalink }}" integrity="{{ $MathJaxConfigJS.Data.Integrity }}" crossorigin="anonymous"></script>
+
+        {{ $MathJaxJS := resources.Get "js/MathJax/es5/tex-svg.js" | resources.Minify | resources.Fingerprint }}
+        <script async defer src="{{ $MathJaxJS.Permalink }}" integrity="{{ $MathJaxJS.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
+
     {{ partial "breadcrumbs.html" . }}
 </head>
