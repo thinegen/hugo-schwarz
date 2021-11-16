@@ -13,10 +13,8 @@ var baseURLArray = [
 for(i = 0; i < document.links.length; i++) {
     var link = document.links[i];
     if (!baseURLArray.includes(link.host)) {
-        {{ if not .Site.IsServer }}
-            link.target = '_blank';
-            link.rel = "noopener external";
-        {{ end }}
+        link.target = '_blank';
+        link.rel = "noopener external";
         {{ if .Site.Params.markExternalLinks }}
             link.classList.add("external-link");
         {{ end }}
