@@ -1,9 +1,7 @@
 <div id="footer" class="center-text">
     <p>
         <a href="{{ relref . "/tags/" }}">Tags</a>
-        {{ with .OutputFormats.Get "rss" -}}
-            | <a href="{{ .Permalink }}">RSS</a>
-        {{ end -}}
+        | <a href="{{ "/index.xml" | absLangURL }}">RSS</a>
         {{ if .Site.Language.Params.imprintPage }}| <a href="{{ relref . .Site.Language.Params.imprintPage }}">{{ i18n "imprintlink" }}</a>{{ end }}
         {{ if and (.Site.Language.Params.imprintPage) (.Site.Language.Params.privacyPage) }}|{{ end }}
         {{ if .Site.Language.Params.privacyPage }}<a href="{{ relref . .Site.Language.Params.privacyPage }}">{{ i18n "gdprlink" }}</a>{{ end }}
