@@ -19,13 +19,15 @@
   {{ end }}
 
   {{ range $paginator.Pages }}
-    <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-      {{ if not $orderSectionAlphabetically}}
-        <br />
-        {{ partial "publishDate.html" . }}
-      {{ end }}
-    </li>
+    {{ if not .Params.nolist }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ if not $orderSectionAlphabetically}}
+          <br />
+          {{ partial "publishDate.html" . }}
+        {{ end }}
+      </li>
+    {{ end }}
   {{ end }}
 </ul>
 
