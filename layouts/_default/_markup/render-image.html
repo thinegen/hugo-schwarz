@@ -6,33 +6,48 @@
 {{ $img := resources.Get (delimit (slice "img" .Destination) "/") }}
 {{ $startimg := $img | fingerprint}}
 
-{{ if gt $img.Width 750 }}
-	{{ $startimg = $img.Resize "500x" | fingerprint }}
-{{ end }}
-
 {{ $imageSizes := slice 750 1000 1250 1500 2000 }}
 
-<div class="pic-container">
-	<picture class="article-img">
-		<source type="image/webp" sizes="50vw"
-		srcset="
-			{{ range $imageSizes }}
-				{{ if gt $img.Width . }}
-					{{ with $img.Resize (printf "%dx webp q90" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
+{{ if eq $image_ext "svg" }}
+
+	{{ $imgResource := resources.Get (printf "%s/%s" "img" .Destination) | minify | fingerprint }}
+
+	<div class="pic-container">
+		<picture class="article-img">
+			<img src="{{ $imgResource.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" integrity="{{ $imgResource.Data.Integrity }}" />
+			{{ with .Text }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
+		</picture>
+	</div>
+
+{{ else }}
+
+	{{ if gt $img.Width 750 }}
+		{{ $startimg = $img.Resize "500x" | fingerprint }}
+	{{ end }}
+
+	<div class="pic-container">
+		<picture class="article-img">
+			<source type="image/webp" sizes="50vw"
+			srcset="
+				{{ range $imageSizes }}
+					{{ if gt $img.Width . }}
+						{{ with $img.Resize (printf "%dx webp q90" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
+					{{ end }}
 				{{ end }}
-			{{ end }}
-			{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .Permalink }} {{ .Width }}w{{ end }}
-		" />
-		<source type="image/{{ $image_ext }}" sizes="50vw"
-		srcset="
-			{{ range $imageSizes }}
-				{{ if gt $img.Width . }}
-					{{ with $img.Resize (printf "%dx" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
+				{{ with $img.Resize (printf "%dx webp q90" $img.Width) | fingerprint }}{{ .Permalink }} {{ .Width }}w{{ end }}
+			" />
+			<source type="image/{{ $image_ext }}" sizes="50vw"
+			srcset="
+				{{ range $imageSizes }}
+					{{ if gt $img.Width . }}
+						{{ with $img.Resize (printf "%dx" .) | fingerprint }}{{ .Permalink }} {{ .Width }}w,{{ end }}
+					{{ end }}
 				{{ end }}
-			{{ end }}
-			{{ ($img | fingerprint).Permalink }} {{ $img.Width }}w
-		" >
-		<img src="{{ $startimg.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" height="{{ math.Round (mul (div $startimg.Height (float $startimg.Width) ) $defaultImageWidth) }}" width="{{ math.Round $defaultImageWidth }}" />
-        {{ with .Text }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
-	</picture>
-</div>
+				{{ ($img | fingerprint).Permalink }} {{ $img.Width }}w
+			" >
+			<img src="{{ $startimg.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" height="{{ math.Round (mul (div $startimg.Height (float $startimg.Width) ) $defaultImageWidth) }}" width="{{ math.Round $defaultImageWidth }}" />
+			{{ with .Text }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
+		</picture>
+	</div>
+
+{{ end }}
