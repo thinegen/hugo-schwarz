@@ -1,10 +1,6 @@
 var hoverNotes;
 
 window.addEventListener("load", function () {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        return;
-    }
-
     var sups = document.getElementsByTagName("sup");
     for (var i = 0; i < sups.length; i++) {
         var sup = sups[i];
