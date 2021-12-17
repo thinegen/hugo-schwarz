@@ -8,11 +8,15 @@
 
 {{ $imageSizes := slice 750 1000 1250 1500 2000 }}
 
+{{ $closeSVG := resources.Get "img/close.svg" | resources.Minify | resources.Fingerprint "sha512" }}
+
 {{ if eq $image_ext "svg" }}
 
 	{{ $imgResource := resources.Get (printf "%s/%s" "img" .Destination) | minify | fingerprint }}
 
 	<div class="pic-container">
+		<img class="lightbox-close" src="{{ $closeSVG.Permalink }}" integrity="{{ $closeSVG.Data.Integrity }}" crossorigin="anonymous">
+
 		<picture class="article-img">
 			<img src="{{ $imgResource.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" integrity="{{ $imgResource.Data.Integrity }}" />
 			{{ with .Text }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
@@ -26,6 +30,8 @@
 	{{ end }}
 
 	<div class="pic-container">
+		<img class="lightbox-close" src="{{ $closeSVG.Permalink }}" integrity="{{ $closeSVG.Data.Integrity }}" crossorigin="anonymous">
+		
 		<picture class="article-img">
 			<source type="image/webp" sizes="50vw"
 			srcset="
@@ -45,7 +51,7 @@
 				{{ end }}
 				{{ ($img | fingerprint).Permalink }} {{ $img.Width }}w
 			" >
-			<img src="{{ $startimg.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" height="{{ math.Round (mul (div $startimg.Height (float $startimg.Width) ) $defaultImageWidth) }}" width="{{ math.Round $defaultImageWidth }}" />
+			<img src="{{ $startimg.Permalink }}" decoding="async" loading="lazy" alt="{{ if .Title }}{{ .Title }}{{ else }}{{ .Text }}{{ end }}" />
 			{{ with .Text }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
 		</picture>
 	</div>

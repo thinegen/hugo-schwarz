@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
     for (var i = 0; i < sups.length; i++) {
         var sup = sups[i];
         if (sup.id && sup.id.startsWith("fnref")) {
-            sup.style.position = "relative";
 
             var footnote = document.getElementById(sup.id.replace("fnref", "fn"));
 
