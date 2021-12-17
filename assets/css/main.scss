@@ -158,6 +158,10 @@ figcaption {
     display: none;
 }
 
+.hoverNote.active-footnote {
+    display: block;
+}
+
 @media screen and (max-width: 55.557em) {
     .hoverNote {
         width: 96vw;

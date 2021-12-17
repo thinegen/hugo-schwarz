@@ -22,7 +22,8 @@ window.addEventListener("load", function () {
             sup.appendChild(hoverNote);
 
             sup.firstChild.addEventListener("click", function (event) {
-                this.nextSibling.style.display = "block";
+                this.nextSibling.classList.toggle("active-footnote");
+                console.log("sup.firstChild");
                 event.preventDefault();
             });
         }
@@ -34,6 +35,7 @@ window.addEventListener("load", function () {
             || event.target.className == "hoverNote"
             || event.target.parentNode.className == "hoverNote"
             || event.target.nodeName == "HTML") {
+                console.log("doc");
             return;
         }
 
@@ -44,7 +46,7 @@ window.addEventListener("load", function () {
         }
 
         for (var i = 0; i < hoverNotes.length; i++) {
-            hoverNotes[i].style.display = "none";
+            hoverNotes[i].classList.remove("active-footnote");
         }
     });
 
