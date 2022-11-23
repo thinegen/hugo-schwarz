@@ -43,7 +43,7 @@
         <meta name="description" content="{{ .Site.Params.Description | safeHTML }}"/>
     {{ end }}
 
-    {{ if .Params.noindex }}
+    {{ if or .Params.noindex .Site.Params.noindex }}
         <meta name="robots" content="noindex,noarchive">
     {{ end }}
 
@@ -56,4 +56,8 @@
     {{ end }}
 
     {{ partial "breadcrumbs.html" . }}
+
+    {{ if .Site.Params.mastodon }}
+        <link rel="me" href="{{ .Site.Params.mastodon }}">
+    {{ end }}
 </head>

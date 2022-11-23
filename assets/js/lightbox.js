@@ -4,7 +4,6 @@ window.addEventListener("load", function () {
     var pic = pics[i];
 
     pic.addEventListener("click", function () {
-      console.log("add");
       this.parentElement.classList.add("lightbox");
       document.body.classList.add("lightbox-enabled");
     });
@@ -15,7 +14,6 @@ window.addEventListener("load", function () {
     var closeBtn = closeBtns[i];
 
     closeBtn.addEventListener("click", function () {
-      console.log("remove");
       this.parentElement.classList.remove("lightbox");
       document.body.classList.remove("lightbox-enabled");
     });

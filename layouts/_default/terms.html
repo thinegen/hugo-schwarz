@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
+<h1 id="page-title">{{ .Title }}</h1>
 <ul id="postrange" class="two-column-ul">
   {{ range .Paginator.Pages.ByTitle }}
   <li>

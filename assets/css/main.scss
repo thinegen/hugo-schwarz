@@ -8,10 +8,17 @@
   @return mix($color1, $color2, 50%);
 }
 
-$backgroundColor: #121212;
-$textColor: #c7cccc;
-$linkColor: #7cf;
-$secondaryColor: #222129; // Background of Code
+$backgroundColor: #22272f;
+$textColor: #f2f2f2;
+$linkColor: #FF6B6B;
+$secondaryColor: #2f3541; // Background of Code
+$borderColor: #484848;
+
+@import "font_source_serif_pro.scss";
+
+hr {
+    color: $borderColor;
+}
 
 * {
     direction: ltr;
@@ -47,6 +54,19 @@ h2 {
     text-decoration: underline;
 }
 
+#page-title {
+    margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 2em;
+}
+
 h1 > a,
 h2 > a,
 h3 > a,
@@ -59,6 +79,9 @@ h6 > a {
 
 header > .center-text {
     margin: 3%;
+}
+header h1 {
+    margin: 0;
 }
 
 a {
@@ -79,14 +102,15 @@ a {
 {{ end }}
 
 body {
-    font-family: "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Source Serif Pro", "Fira Sans", Arial, Helvetica, sans-serif;
     background-color: $secondaryColor;
     color: $textColor;
     margin: 0;
+    font-size: 16.5px;
 }
 
 #wrapper {
-    max-width: 50em;
+    max-width: 60em;
     width: 90vw;
     margin: 1em auto ;
 }
@@ -141,8 +165,10 @@ figcaption {
     margin: 1em 0;
 
     position: relative;
-    width: 70em;
-    left: calc(-35em + 50%);
+
+    max-width: 80em;
+    width: 90vw;
+    left: calc(-40em + 50%);
     display: block;
 
     border-width: 0.15em;
@@ -150,8 +176,8 @@ figcaption {
     border-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0%,
-        $textColor 10%,
-        $textColor 90%,
+        $borderColor 10%,
+        $borderColor 90%,
         rgba(0, 0, 0, 0) 100%
       ) 100% 1;
 
@@ -162,18 +188,21 @@ figcaption {
     display: block;
 }
 
-@media screen and (max-width: 55.557em) {
+@media screen and (max-width: 80em) {
     .hoverNote {
         width: 98vw;
         left: calc(-49vw + 50%);
     }
 }
 
+.hoverNote * {
+    margin: 2em 9em;
+}
 
-.hoverNote p {
+.hoverNote pre {
+    background-color: $backgroundColor;
     margin: 2em auto;
-    width: calc(90vw - 8vw);
-    max-width: calc(60em - 8vw);
+    padding: 1vw;
 }
 
 .hoverNote a {
@@ -195,13 +224,15 @@ figcaption {
 
 #content {
     margin: 0 auto;
-    padding: 1vw 4vw;
-    border: 0.15em solid $textColor;
+    padding: 1vw 3vw;
+    border: 0.15em solid $borderColor;
     background-color: $backgroundColor;
 }
 
 #header {
     margin-bottom: 1em;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #header-nav a {
@@ -228,7 +259,7 @@ td > pre {
 }
 
 blockquote {
-    border-left: 0.2em solid $textColor;
+    border-left: 0.2em solid $borderColor;
     padding-left: 10px;
 }
 
@@ -334,7 +365,7 @@ tr:nth-child(2n) {
 }
 
 #TOC {
-    border: 0.075em solid $textColor;
+    border: 0.075em solid $borderColor;
     padding: 1em;
     margin: 1em 0;
     overflow: auto;

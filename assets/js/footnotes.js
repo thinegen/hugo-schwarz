@@ -19,7 +19,6 @@ window.addEventListener("load", function () {
 
             sup.firstChild.addEventListener("click", function (event) {
                 this.nextSibling.classList.toggle("active-footnote");
-                console.log("sup.firstChild");
                 event.preventDefault();
             });
         }
@@ -31,7 +30,6 @@ window.addEventListener("load", function () {
             || event.target.className == "hoverNote"
             || event.target.parentNode.className == "hoverNote"
             || event.target.nodeName == "HTML") {
-                console.log("doc");
             return;
         }
 

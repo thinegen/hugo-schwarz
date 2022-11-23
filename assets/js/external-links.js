@@ -12,7 +12,6 @@ var baseURLArray = [
 
 for(i = 0; i < document.links.length; i++) {
     var link = document.links[i];
-    console.log(link, link.host);
     if (!baseURLArray.includes(link.host)) {
         link.target = '_blank';
         link.rel = "noopener external";
