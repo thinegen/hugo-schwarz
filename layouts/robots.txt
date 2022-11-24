@@ -1,4 +1,10 @@
 Sitemap: {{ "sitemap.xml" | absURL }}
+
+{{ if .Site.Params.noindex }}
+User-agent: *
+Disallow: /
+{{ end }}
+
 {{ if .Site.Params.noindexImages }}
 User-agent: *
 Disallow: /*.gif$
