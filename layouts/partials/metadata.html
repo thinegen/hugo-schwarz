@@ -11,7 +11,7 @@
     {{ if .GitInfo }}
       {{ if $.Site.Params.giturl }}
         | {{ i18n "metadata-last-update" }}: <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commit/{{ .GitInfo.Hash }}">{{ $lastModified }}</a>
-        | <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commits/main/content/{{ .Site.Language.Lang }}/{{ .File.Path }}">{{ i18n "metadata-all-updates" }}</a>
+        | <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commits/{{ default "main" .Site.Params.gitbranch }}/content/{{ .Site.Language.Lang }}/{{ .File.Path }}">{{ i18n "metadata-all-updates" }}</a>
       {{ else }}
         | {{ i18n "metadata-last-update" }}: {{ $lastModified }}
       {{ end }}
