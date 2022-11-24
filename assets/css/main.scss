@@ -195,7 +195,7 @@ figcaption {
     }
 }
 
-.hoverNote * {
+.hoverNote > * {
     margin: 2em 9em;
 }
 
@@ -203,10 +203,6 @@ figcaption {
     background-color: $backgroundColor;
     margin: 2em auto;
     padding: 1vw;
-}
-
-.hoverNote a {
-    color: shade($linkColor, 33%);
 }
 
 .footnote-ref {
