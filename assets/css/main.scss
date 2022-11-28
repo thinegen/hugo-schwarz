@@ -32,9 +32,9 @@ hr {
 
 code,
 code * {
+    font-size: smaller;
     font-family: "Source Code Pro", 'Courier New', Courier, monospace;
     text-align: left;
-    font-size: 1em;
     -webkit-text-size-adjust: none;
 }
 
@@ -148,7 +148,7 @@ body {
 }
 
 figcaption {
-    font-size: small;
+    font-size: smaller;
     font-style: italic;
     text-align: center;
     margin: 0.5em;
@@ -217,11 +217,15 @@ figcaption {
 }
 
 .metadata {
-    font-size: small;
+    font-size: smaller;
 }
 
 #translations {
-    font-size: small;
+    font-size: smaller;
+}
+
+#footer > #translations {
+    font-size: inherit;
 }
 
 #content {
@@ -292,7 +296,7 @@ tr:nth-child(2n) {
 
 #footer {
     margin-top: 1%;
-    font-size: small;
+    font-size: smaller;
 }
 
 #copyright {
@@ -311,7 +315,7 @@ tr:nth-child(2n) {
 }
 
 #next-prev {
-    font-size: small;
+    font-size: smaller;
     margin: 0 auto;
     text-align: center;
 }
@@ -347,7 +351,7 @@ tr:nth-child(2n) {
     display: block;
     width: 100%;
     height: 100%;
-    font-size: small;
+    font-size: smaller;
 }
 
 .page-item.active a {
