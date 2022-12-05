@@ -465,6 +465,14 @@ body.lightbox-enabled {
     margin: 2%;
 }
 
+.aside {
+    display: block;
+    background-color: $secondaryColor;
+    padding: 0.75em 1em;
+    margin: 1% 3%;
+    font-style: italic;
+}
+
 @import "native.scss";
 .chroma .hl { background-color: shade(#9d5024, 15%); }
 .chroma .lnt { color: shade($textColor, 10%) }
