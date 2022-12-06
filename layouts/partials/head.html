@@ -8,6 +8,8 @@
 
     {{ hugo.Generator }}
 
+    {{ partial "structured-data.html" . }}
+
     {{ $css := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/style.main.scss" . | toCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
     {{ $footnoteJS := resources.Get "js/footnotes.js" | resources.Minify | resources.Fingerprint "sha512" }}
@@ -54,8 +56,6 @@
         {{ $MathJaxJS := resources.Get "js/MathJax/es5/tex-svg.js" | resources.Minify | resources.Fingerprint }}
         <script async defer src="{{ $MathJaxJS.Permalink }}" integrity="{{ $MathJaxJS.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ end }}
-
-    {{ partial "breadcrumbs.html" . }}
 
     {{ if .Site.Params.mastodon }}
         <link rel="me" href="{{ .Site.Params.mastodon }}">

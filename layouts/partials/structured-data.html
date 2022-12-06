@@ -1,0 +1,96 @@
+{{ $dateFormat := "2006-01-02T15:04:05Z07:00" }}
+
+{{- $scratch := newScratch -}}
+
+<!-- Set variables -->
+{{- $scratch.Set "pages" slice -}}
+{{- $scratch.Set "reversed" slice -}}
+{{- $scratch.Set "current" . -}}
+
+<!-- Loop over parent pages -->
+{{- range slice 1 2 3 4 5 6 -}} <!-- Since there is no while loop in Hugo, I set it to a maximum of 6 crumbs. If there are more, you can increase the slice range -->
+    {{- if and ($scratch.Get "current") (not ($scratch.Get "current").IsHome) -}}
+        {{- $scratch.Add "reversed" ($scratch.Get "current") -}}
+        {{- $scratch.Set "current" ($scratch.Get "current").Parent -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- Add "position" property -->
+{{- $scratch.Set "position" (len ($scratch.Get "reversed")) -}}
+{{- range $scratch.Get "reversed" -}}
+    {{- $scratch.Add "pages" (dict "position" ($scratch.Get "position") "page" .) -}}
+    {{- $scratch.Set "position" (sub ($scratch.Get "position") 1) -}}
+{{- end -}}
+
+<!-- Reverse page order & create breadcrumb objects -->
+{{ if gt ($scratch.Get "pages") 0 }}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "graph":
+        [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {{- range sort ($scratch.Get "pages") "position" "asc" -}}
+                        {{- if ne .position 1 -}}
+                            ,
+                        {{- end -}}
+                        {
+                            "@type": "ListItem",
+                            "position": {{ .position }},
+                            "item": "{{ .page.Permalink}}",
+                            "name": "{{ if .page.Params.BreadcrumbListName }}{{ .page.Params.BreadcrumbListName }}{{ else }}{{ .page.Title }}{{ end }}"  
+                        }
+                    {{- end -}}
+                ]
+            }
+
+        {{ if .IsPage }}
+            ,{
+                "@type": "BlogPosting",
+                "@id": {{ .Permalink }},
+                "headline": "{{ .Title }}",
+                "datePublished": "{{ .PublishDate.Format $dateFormat }}",
+                "dateModified": "{{ .Lastmod.Format $dateFormat }}",
+                "wordCount": {{- .Content | countwords -}},
+                {{ if gt (len (.GetTerms "tags")) 0 }}
+                    "about": [
+                        {{ range first 1 (.GetTerms "tags").ByTitle }}
+                            {{ .LinkTitle }}
+                        {{ end }}
+                        {{ range after 1 (.GetTerms "tags").ByTitle }}
+                            ,{{ .LinkTitle }}
+                        {{ end }}
+                    ],
+                {{ end }}
+                {{ if .Page.Params.description }}
+                    "description": {{ .Page.Params.description }},
+                {{ end }}
+                "url": {{ .Permalink }},
+                "isPartOf": {
+                    "@type" : "Blog",
+                    "@id": "{{ .Site.BaseURL }}",
+                    "@url": "{{ .Site.BaseURL }}",
+                    "name": "{{ .Site.Title }}"
+                }
+            }
+        {{ end }}
+        ]
+    }
+</script>
+{{ end }}
+{{ if .IsPage }}
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:description" content="{{ .Page.Params.description }}" />
+    <meta property="og:locale" content="{{ .Site.Language }}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+
+    <meta property="og:published_time" content="{{ .PublishDate.Format $dateFormat }}" />
+    <meta property="og:modified_time" content="{{ .Lastmod.Format $dateFormat }}" />
+    {{ range (.GetTerms "tags").ByTitle }}
+        <meta property="og:tag" content="{{ .LinkTitle }}" />
+    {{ end }}
+{{ end }}
