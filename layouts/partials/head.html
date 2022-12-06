@@ -8,6 +8,7 @@
 
     {{ hugo.Generator }}
 
+    {{ template "_internal/opengraph.html" . }}
     {{ partial "structured-data.html" . }}
 
     {{ $css := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/style.main.scss" . | toCSS | minify | fingerprint }}
