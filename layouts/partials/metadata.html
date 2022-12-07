@@ -6,8 +6,9 @@
 <div class="center-text metadata">
   {{ partial "tags.html" . }}
   <p>
-    {{ i18n "metadata-published" }}: {{ partial "publishDate.html" . }}
-
+    {{ if .PublishDate }}
+      {{ i18n "metadata-published" }}: {{ partial "publishDate.html" . }}
+    {{ end }}
     {{ if .GitInfo }}
       {{ if $.Site.Params.giturl }}
         | {{ i18n "metadata-last-update" }}: <a target="_blank" rel="noopener external" href="{{ $.Site.Params.giturl }}/commit/{{ .GitInfo.Hash }}">{{ $lastModified }}</a>
