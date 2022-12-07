@@ -51,8 +51,12 @@
                 "@type": "BlogPosting",
                 "@id": {{ .Permalink }},
                 "headline": "{{ .Title }}",
+                {{ if .PublishDate }}
                 "datePublished": "{{ .PublishDate.Format $dateFormat }}",
+                {{ end }}
+                {{ if .Lastmod }}
                 "dateModified": "{{ .Lastmod.Format $dateFormat }}",
+                {{ end }}
                 "wordCount": {{- .Content | countwords -}},
                 {{ if gt (len (.GetTerms "tags")) 0 }}
                     "about": [

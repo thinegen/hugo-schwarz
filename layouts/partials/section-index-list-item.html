@@ -1,5 +1,5 @@
 <li>
-    <a href="{{ .Permalink }}">{{ if .Section }}[{{ .Section | humanize }}] {{ end }}{{ .Title }}</a>
+    <a href="{{ .Permalink }}">{{ if .CurrentSection }}[{{ .CurrentSection.Title | humanize }}] {{ end }}{{ .Title }}</a>
     <br />
     {{ partial "publishDate.html" . }}
 </li>
