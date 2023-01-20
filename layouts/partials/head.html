@@ -61,4 +61,8 @@
     {{ if .Site.Params.mastodon }}
         <link rel="me" href="{{ .Site.Params.mastodon }}">
     {{ end }}
+
+    {{ if .Site.Params.HTMLHeadOther }}
+        {{ .Site.Params.HTMLHeadOther | safeHTML }}
+    {{ end }}
 </head>
