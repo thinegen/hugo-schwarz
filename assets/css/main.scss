@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Inter", "Roboto", "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Inter", "Fira Sans", Arial, Helvetica, sans-serif;
     margin-top: 2em;
 }
 
@@ -162,7 +162,7 @@ figcaption {
 }
 
 #postrange li {
-    font-family: "Inter", "Roboto", "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Inter", "Fira Sans", Arial, Helvetica, sans-serif;
     margin-bottom: 0.75em;
 }
 
@@ -372,7 +372,7 @@ tr:nth-child(2n) {
 }
 
 #TOC {
-    font-family: "Inter", "Roboto", "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Inter", "Fira Sans", Arial, Helvetica, sans-serif;
     border: 0.075em solid $borderColor;
     padding: 1em;
     margin: 1em 0;
@@ -485,7 +485,7 @@ body.lightbox-enabled {
 @import "native.scss";
 .chroma .hl { background-color: shade(#9d5024, 15%); }
 .chroma .lnt { color: shade($textColor, 10%) }
-.chroma { color: $textColor; background-color: $secondaryColor; }
+.chroma { color: $textColor; background-color: $backgroundColor; }
 .chroma .c1 { color: tint(#6272a4, 33%); }
 
 $hamburger-padding-x           : 0px;
