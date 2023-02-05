@@ -481,6 +481,58 @@ body.lightbox-enabled {
     margin-top: 2em;
 }
 
+// littlefoot
+.littlefoot-footnote__content {
+    font-size: inherit !important;
+}
+
+.littlefoot-footnote__host {
+    width: fit-content;
+    height: fit-content;
+}
+
+.littlefoot-footnote__button__custom {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    margin-left: 0.75ch;
+    position: inline-block;
+}
+
+.littlefoot-footnote__button__custom > svg {
+    width: 20px;
+    fill: $linkColor;
+    vertical-align: middle;
+}
+
+.littlefoot-footnote,
+.littlefoot-footnote__content,
+.littlefoot-footnote__tooltip {
+    border: 0;
+    opacity: 1 !important;
+}
+
+.littlefoot-footnote,
+.littlefoot-footnote__tooltip {
+    border: 0.15em solid $borderColor;
+}
+
+.littlefoot-footnote__content,
+.littlefoot-footnote__tooltip,
+.littlefoot-footnote,
+.littlefoot-footnote__wrapper {
+    background: $secondaryColor;
+}
+
+.littlefoot-footnote.is-scrollable .littlefoot-footnote__wrapper::after,
+.littlefoot-footnote.is-scrollable .littlefoot-footnote__wrapper::before {
+    background-image: none;
+}
+
 @import "native.scss";
 .chroma .hl { background-color: shade(#9d5024, 15%); }
 .chroma .lnt { color: shade($textColor, 10%) }
