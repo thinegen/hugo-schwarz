@@ -14,8 +14,7 @@ $linkColor: #FF6B6B;
 $secondaryColor: #2f3541; // Background of Code
 $borderColor: #484848;
 
-@import "font_source_serif_pro.scss";
-@import "font_inter.scss";
+@import "font_source_code_pro.scss";
 @import "font_roboto.scss";
 
 hr {
@@ -65,7 +64,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Inter", "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Roboto", "Fira Sans", Arial, Helvetica, sans-serif;
     margin-top: 2em;
 }
 
@@ -162,7 +161,7 @@ figcaption {
 }
 
 #postrange li {
-    font-family: "Inter", "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Roboto", "Fira Sans", Arial, Helvetica, sans-serif;
     margin-bottom: 0.75em;
 }
 
@@ -392,7 +391,7 @@ tr:nth-child(2n) {
 }
 
 #TOCHeader > h2 {
-    font-family: "Inter", "Fira Sans", Arial, Helvetica, sans-serif;
+    font-family: "Roboto", "Fira Sans", Arial, Helvetica, sans-serif;
     margin: 0;
     text-decoration: none;
     display: inline;
