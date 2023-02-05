@@ -473,6 +473,12 @@ body.lightbox-enabled {
     font-style: italic;
 }
 
+#breadcrumbnav {
+    font-size: smaller;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
 @import "native.scss";
 .chroma .hl { background-color: shade(#9d5024, 15%); }
 .chroma .lnt { color: shade($textColor, 10%) }
