@@ -109,7 +109,7 @@ body {
 }
 
 #wrapper {
-    max-width: 60em;
+    max-width: 75ch;
     width: 90vw;
     margin: 1em auto ;
 }
@@ -138,6 +138,10 @@ body {
     .pic-container {
         width: 66%;
     }
+}
+
+ul {
+    padding-left: 1.5em;
 }
 
 .pic-container img {
@@ -251,8 +255,14 @@ figcaption {
 
 .highlight,
 article > pre {
-    width: 90%;
-    margin: 0 auto;
+    width: fit-content;
+    max-width: 75vw;
+    position: relative; 
+    left: 50%;
+    transform: translateX(-50%);
+
+    border: 0.15em solid $borderColor;
+    background: $backgroundColor;
 }
 
 td > pre {
@@ -265,7 +275,7 @@ td > pre {
 
 blockquote {
     border-left: 0.2em solid $borderColor;
-    padding-left: 10px;
+    margin: 0 0 0 1em;
 }
 
 table {
