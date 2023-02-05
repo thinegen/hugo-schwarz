@@ -21,5 +21,9 @@ window.addEventListener("load", function () {
         tocNav.style.display = "unset";
         tocDiv.style.marginBottom = "0.75em";
         hamburgerBtn.classList.add("is-active");
+    } else {
+        tocNav.style.display = "none";
+        tocDiv.style.marginBottom = "";
+        hamburgerBtn.classList.remove("is-active");
     }
 });
