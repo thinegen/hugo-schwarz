@@ -220,14 +220,6 @@ figcaption {
     font-size: smaller;
 }
 
-#translations {
-    font-size: smaller;
-}
-
-#footer > #translations {
-    font-size: inherit;
-}
-
 #content {
     margin: 0 auto;
     padding: 1vw 3vw;
@@ -305,12 +297,9 @@ tr:nth-child(2n) {
     font-size: smaller;
 }
 
-#copyright {
-    text-align: center;
-}
-
 #copyright-link {
     text-decoration: none;
+    font-size: initial;
 }
 
 .cc-copyright-icon {

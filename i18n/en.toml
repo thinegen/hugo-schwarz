@@ -18,3 +18,9 @@ other = "Imprint"
 
 [toc-hamburger-aria-label]
 other = "Hide or show table of contents"
+
+[tags-more]
+other = "More: "
+
+[topics-part-of]
+other = "Part of: "

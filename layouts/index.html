@@ -4,7 +4,7 @@
   <h1 id="page-title">{{ .Site.Title }}</h1>
   <ul id="postrange">
     {{ range .Paginator.Pages }}
-      {{ if not .Params.nolist }}
+      {{ if and (not .Params.nolist) .Params.PublishDate }}
         {{ partial "section-index-list-item.html" . }}
       {{end}}
     {{end}}

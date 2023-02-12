@@ -18,3 +18,9 @@ other = "Impressum"
 
 [toc-hamburger-aria-label]
 other = "Inhaltsverzeichnis anzeigen oder verbergen"
+
+[tags-more]
+other = "Mehr: "
+
+[topics-part-of]
+other = "Teil von: "

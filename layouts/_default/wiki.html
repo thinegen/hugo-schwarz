@@ -5,7 +5,9 @@
         <div class="center-text">
             {{ partial "breadcrumbs.html" . }}
             <h1 id="page-title">{{ .Title }}</h1>
-            {{ partial "translations.html" . }}
+            <div class="metadata">
+                {{ partial "translations.html" . }}
+            </div>
         </div>
         <hr />
         <div id="TOC">
@@ -23,8 +25,14 @@
     {{ .Content }}
 </article>
 
-{{ partial "metadata.html" . }}
-{{ partial "copyright.html" . }}
+<hr />
+<div class="center-text metadata">
+  {{ if gt (len (.GetTerms "tags")) 0 }}
+    {{ i18n "tags-more" }}{{ partial "tags.html" (dict "context" . "Taxonomy" "tags") }}
+  {{ end}}
+  <p>{{ partial "metadata.html" . }}</p>
+  {{ partial "copyright.html" . }}
+</div>
 {{ partial "prev-next.html" . }}
 
 {{ end }}

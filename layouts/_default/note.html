@@ -7,6 +7,10 @@
             <h1 id="page-title">{{ .Title }}</h1>
             <div class="metadata">
                 {{ partial "translations.html" . }}
+                <br />
+                {{ if gt (len (.GetTerms "topics")) 0 }}
+                  {{ i18n "topics-part-of" }}{{ partial "tags.html" (dict "context" . "Taxonomy" "topics") }}
+                {{ end }}
             </div>
         </div>
     </header>
@@ -16,9 +20,6 @@
 
 <hr />
 <div class="center-text metadata">
-  {{ if gt (len (.GetTerms "tags")) 0 }}
-    {{ i18n "tags-more" }}{{ partial "tags.html" (dict "context" . "Taxonomy" "tags") }}
-  {{ end }}
   <p>{{ partial "metadata.html" . }}</p>
   {{ partial "copyright.html" . }}
 </div>

@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 {{ partial "breadcrumbs.html" . }}
-<h1 id="page-title">#{{ .Title }}</h1>
+<h1 id="page-title">{{ .Title }}</h1>
 <ul id="postrange">
   {{ range .Paginator.Pages }}
     {{ partial "section-index-list-item.html" . }}

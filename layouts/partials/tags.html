@@ -1,5 +1,3 @@
-<div id="tags" class="center-text">
-  {{ range (.GetTerms "tags").ByTitle }}
-    #<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-  {{ end }}
-</div>
+{{ range (.context.GetTerms .Taxonomy).ByTitle }}
+  <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+{{ end }}

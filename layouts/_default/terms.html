@@ -4,7 +4,7 @@
 <ul id="postrange" class="two-column-ul">
   {{ range .Paginator.Pages.ByTitle }}
   <li>
-    #<a href="{{ .Permalink }}">{{ .Title }}</a>: {{ .Pages.Len }}
+    <a href="{{ .Permalink }}">{{ .Title }}</a>: {{ .Pages.Len }}
   </li>
   {{ end }}
 </ul>
