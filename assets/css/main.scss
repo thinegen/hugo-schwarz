@@ -491,6 +491,11 @@ body.lightbox-enabled {
     height: fit-content;
 }
 
+.littlefoot-footnote__button__custom::before {
+    content: ' ';
+    display: inline-block;
+}
+
 .littlefoot-footnote__button__custom {
     background: none;
     color: inherit;
@@ -499,7 +504,6 @@ body.lightbox-enabled {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    margin-left: 0.75ch;
     position: inline-block;
 }
 
