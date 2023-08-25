@@ -13,6 +13,12 @@
     {{ template "_internal/opengraph.html" . }}
     {{ partial "structured-data.html" . }}
 
+    {{ if .Params.redirect }}
+        <meta http-equiv="refresh" content="0; URL={{ .Params.redirect }}">
+    {{ else if $.Site.Params.redirect }}
+        <meta http-equiv="refresh" content="0; URL={{ $.Site.Params.redirect }}">
+    {{ end }}
+
     <!-- littlefoot -->
     {{ $littlefootJS := resources.Get "js/littlefoot.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $littlefootJS.Permalink }}"  integrity="{{ $littlefootJS.Data.Integrity }}" crossorigin="anonymous" async defer></script>
